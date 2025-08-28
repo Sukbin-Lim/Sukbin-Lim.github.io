@@ -103,11 +103,11 @@ content:
         description: | # this will include new lines to allow paragraphs
           Key Courses: Computer Architecture, Operating Systems and System Programming, Digital Logic Design
 
-      - layout: left
-        title: Jeju Science High School
-        caption: Mar.2015 - Feb.2017
-        description: | # this will include new lines to allow paragraphs
-          Early graduation (completed in 2 years)
+      # - layout: left
+      #   title: Jeju Science High School
+      #   caption: Mar.2015 - Feb.2017
+      #   description: | # this will include new lines to allow paragraphs
+      #     Early graduation (completed in 2 years)
 
 
   # Title for the section
