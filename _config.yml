@@ -127,7 +127,7 @@ content:
         quote: >
           Single-Run
         description: | # this will include new lines to allow paragraphs
-          Todo.
+          Todo.  
 
       - layout: top-middle
         title: Adelia
