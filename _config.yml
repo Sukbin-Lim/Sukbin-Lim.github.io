@@ -118,21 +118,21 @@ content:
       - layout: top-middle
         title: Bertha-Edge
         quote: >
-          Todo
+          Single-Run
         description: | # this will include new lines to allow paragraphs
           Todo.
 
       - layout: top-middle
         title: Bertha-DC
         quote: >
-          Todo
+          Single-Run
         description: | # this will include new lines to allow paragraphs
           Todo.
-          
+
       - layout: top-middle
         title: Adelia
         quote: >
-          Todo
+          MPW
         description: | # this will include new lines to allow paragraphs
           Todo.
 
