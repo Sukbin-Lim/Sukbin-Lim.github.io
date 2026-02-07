@@ -114,6 +114,7 @@ content:
   - title: Project
     # Type of content section (list/text)
     layout: list
+    content:
       - layout: top-middle
         title: Adelia
         quote: >
