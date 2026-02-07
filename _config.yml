@@ -127,7 +127,7 @@ content:
       - layout: top-middle
         title: Hawkeye
         quote: >
-          @KAIST, JSSC'24, CICC'24
+          @KAIST CASTLab, JSSC'24, CICC'24
         description: | # this will include new lines to allow paragraphs
           Developed 'Hawkeye,' a 3D point cloud processor designed to overcome the inherent irregularity and sparsity of LiDAR data for autonomous driving.
           Addressed memory bottlenecks by introducing a Virtual Pillar mechanism that enables continuous feature encoding with minimized on-chip memory usage.
