@@ -114,21 +114,6 @@ content:
   - title: Project
     # Type of content section (list/text)
     layout: list
-    content:
-      - layout: top-middle
-        title: Bertha-Edge
-        quote: >
-          Single-Run
-        description: | # this will include new lines to allow paragraphs
-          Todo.
-
-      - layout: top-middle
-        title: Bertha-DC
-        quote: >
-          Single-Run
-        description: | # this will include new lines to allow paragraphs
-          Todo.  
-
       - layout: top-middle
         title: Adelia
         quote: >
@@ -148,7 +133,7 @@ content:
       1. Jaehoon Heo, Junsoo Kim, Wontak Han, **Sukbin Lim**, Joo-Young Kim, "T-PIM: A 2.21-to-161.08 TOPS/W processing-in-memory accelerator for end-to-end on-device training", IEEE Custom Integrated Circuits Conference (CICC), 2022, [Link](https://ieeexplore.ieee.org/abstract/document/9772808)
     
       ## **Journal**
-      1. Adelia, (Under Review)
+      1. **Sukbin Lim**, Jung-Hoon Kim, Junseo Cha, Seungjae Moon, Dongjin Seo, Hunjong Lee, Jongho Kim, Jinwon Lee, Joo-Young Kim, "Adelia: A 4nm LLM Processing Unit with Streamlined Dataflow and Dual-Mode Parallelism for Maximizing Hardware Efficiency", IEEE Journal of Solid-State Circuits (JSSC), 2026
       1. **Sukbin Lim**, Jaehoon Heo, Jinho Yang, Joo-Young Kim, "Hawkeye: a point cloud neural network processor with virtual pillar and quadtree-based workload management for real-time outdoor bev detection", IEEE Journal of Solid-State Circuits (JSSC), 2024, [Link](https://ieeexplore.ieee.org/abstract/document/10807164)
       1. Seungjae Moon, Jung-Hoon Kim, Junsoo Kim, Seongmin Hong, Junseo Cha, Minsu Kim, **Sukbin Lim**, Gyubin Choi, Dongjin Seo, Jongho Kim, Hunjong Lee, Hyunjun Park, Ryeowook Ko, Soongyu Choi, Jongse Park, Jinwon Lee, Joo-Young Kim, "Lpu: A latency-optimized and highly scalable processor for large language model inference", IEEE Micro, 2024, [Link](https://ieeexplore.ieee.org/abstract/document/10591630)
       1. Jaehoon Heo, Junsoo Kim, **Sukbin Lim**, Wontak Han, Joo-Young Kim, "T-PIM: An energy-efficient processing-in-memory accelerator for end-to-end on-device training", IEEE Journal of Solid-State Circuits (JSSC), 2022, [Link](https://ieeexplore.ieee.org/abstract/document/9954125)
