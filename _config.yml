@@ -124,6 +124,17 @@ content:
           Engineered Dual-Mode Parallelism to dynamically switch between context and batch execution via a controller.
           Fabricated in Samsung 4nm process, the chip achieved 2.79x higher compute efficiency and 2.05x higher memory bandwidth efficiency compared to the NVIDIA H100 system.
 
+      - layout: top-middle
+        title: Hawkeye
+        quote: >
+          @KAIST, JSSC'24, CICC'24
+        description: | # this will include new lines to allow paragraphs
+          Developed 'Hawkeye,' a 3D point cloud processor designed to overcome the inherent irregularity and sparsity of LiDAR data for autonomous driving.
+          Addressed memory bottlenecks by introducing a Virtual Pillar mechanism that enables continuous feature encoding with minimized on-chip memory usage.
+          Furthermore, tackled data sparsity in the backbone by implementing Quadtree-based ROI management and Sign-Magnitude Slice-Level Skipping, effectively skipping redundant computations.
+          Validated the architecture through Samsung 28nm fabrication, achieving 44.2 FPS and 38.5 TOPS/W, demonstrating a 13.8x efficiency improvement over the baseline.
+
+
   # Title for the section
   - title: Publications
     layout: text
