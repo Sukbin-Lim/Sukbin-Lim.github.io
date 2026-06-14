@@ -100,6 +100,5 @@ export interface Profile {
   email: string;
   scholar: string;
   linkedin: string;
-  github?: string;
   orcid?: string;
 }

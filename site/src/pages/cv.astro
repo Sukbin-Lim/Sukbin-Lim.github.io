@@ -5,11 +5,11 @@ import { profile } from '../data/profile';
 import { projects } from '../data/projects';
 import { publications } from '../data/publications';
 import { experience, education, patents, awards, service } from '../data/resume';
+import { linkOf } from '../data/util';
 
 const journals = publications.filter((p) => p.type === 'journal');
 const confs = publications.filter((p) => p.type === 'conference');
 const cvProjects = projects.filter((p) => p.pubIds.length > 0 || p.chipId || (p.patentIds?.length ?? 0) > 0);
-const linkOf = (p: typeof publications[number]) => p.links?.doi ?? p.links?.ieee ?? p.links?.pdf ?? null;
 ---
 <Base title="Sukbin Lim — Curriculum Vitae" bare={true}>
   <div class="cvbar no-print">

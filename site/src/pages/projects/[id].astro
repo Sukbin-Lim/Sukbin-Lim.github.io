@@ -1,12 +1,12 @@
 ---
 import Base from '../../layouts/Base.astro';
 import PubRow from '../../components/PubRow.astro';
-import TypeTags from '../../components/TypeTags.astro';
+import ProjectHeader from '../../components/ProjectHeader.astro';
 import { projects } from '../../data/projects';
 import { chips } from '../../data/chips';
 import { patents } from '../../data/resume';
 import { pubsByIds } from '../../data/util';
-import type { Spec } from '../../data/types';
+import type { Spec, Patent } from '../../data/types';
 
 export function getStaticPaths() {
   return projects.map((p) => ({ params: { id: p.id }, props: { project: p } }));
@@ -15,7 +15,7 @@ const { project: p } = Astro.props;
 
 const chip = p.chipId ? chips.find((c) => c.id === p.chipId) : null;
 const pubs = pubsByIds(p.pubIds);
-const pats = (p.patentIds ?? []).map((id) => patents.find((pt) => pt.id === id)).filter(Boolean);
+const pats = (p.patentIds ?? []).map((id) => patents.find((pt) => pt.id === id)).filter((pt): pt is Patent => pt != null);
 const kpis = p.metrics ?? chip?.kpis ?? [];
 
 const specs = chip?.specs ?? [];
@@ -26,13 +26,7 @@ for (let i = 0; i < specs.length; i += 2) specRows.push(specs.slice(i, i + 2));
   <a class="back" href="/projects">← All projects</a>
 
   <article class="detail">
-    <div class="dhead">
-      <span class={`role acc-${p.accent}`}>{p.role}</span>
-      <span class="flag-top-r">
-        <TypeTags tags={p.tags} />
-        <span class="nodebadge">{p.node}</span>
-      </span>
-    </div>
+    <ProjectHeader project={p} class="dhead" />
     <h1>{p.codename}</h1>
     <div class="dsub">{p.kind} · {p.org}</div>
 
@@ -78,7 +72,7 @@ for (let i = 0; i < specs.length; i += 2) specRows.push(specs.slice(i, i + 2));
       <section class="dblock">
         <h2 class="dh">Patents</h2>
         <ul class="patlist">
-          {pats.map((pt) => <li><span class="ptid">{pt!.id}</span> {pt!.title}</li>)}
+          {pats.map((pt) => <li><span class="ptid">{pt.id}</span> {pt.title}</li>)}
         </ul>
       </section>
     )}

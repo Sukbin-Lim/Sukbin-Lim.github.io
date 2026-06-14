@@ -1,4 +1,4 @@
-import type { Project, Theme } from './types';
+import type { Project, Theme, ThemeId } from './types';
 
 // Research themes — the section grouping for the Projects page. Order = display order.
 export const themes: Theme[] = [
@@ -130,7 +130,7 @@ export const projects: Project[] = [
   },
 ];
 
-export const projectsByTheme = (id: string) => projects.filter((p) => p.theme === id);
+export const projectsByTheme = (id: ThemeId) => projects.filter((p) => p.theme === id);
 
 // Fabricated chips = projects tagged ASIC (real tapeouts: Adelia, Hawkeye, T-PIM, JNPU).
 // LPU's 4 nm ASIC is synthesized-only (FPGA-implemented), so it is NOT counted here.

@@ -1,10 +1,11 @@
 ---
 import type { Publication } from '../data/types';
+import { linkOf } from '../data/util';
 import AuthorList from './AuthorList.astro';
 import Badge from './Badge.astro';
 interface Props { pub: Publication }
 const { pub } = Astro.props;
-const href = pub.links?.doi ?? pub.links?.ieee ?? pub.links?.pdf ?? null;
+const href = linkOf(pub);
 const legendParts = [
   pub.equalNote ? '* Equal contribution' : null,
   pub.venue.full,

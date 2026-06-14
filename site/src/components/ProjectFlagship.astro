@@ -1,19 +1,13 @@
 ---
 import type { Project } from '../data/types';
 import { venueTags } from '../data/util';
-import TypeTags from './TypeTags.astro';
+import ProjectHeader from './ProjectHeader.astro';
 interface Props { project: Project }
 const { project: p } = Astro.props;
 const tags = venueTags(p.pubIds);
 ---
 <a class={`flag acc-${p.accent}`} href={`/projects/${p.id}`}>
-  <div class="flag-top">
-    <span class={`role acc-${p.accent}`}>{p.role}</span>
-    <span class="flag-top-r">
-      <TypeTags tags={p.tags} />
-      <span class="nodebadge">{p.node}</span>
-    </span>
-  </div>
+  <ProjectHeader project={p} />
   <h3>{p.codename}</h3>
   <div class="sub">{p.kind}</div>
 

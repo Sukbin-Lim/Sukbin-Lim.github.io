@@ -1,0 +1,13 @@
+---
+import type { Project } from '../data/types';
+import TypeTags from './TypeTags.astro';
+interface Props { project: Project; class?: string }
+const { project: p, class: className = 'flag-top' } = Astro.props;
+---
+<div class={className}>
+  <span class={`role acc-${p.accent}`}>{p.role}</span>
+  <span class="flag-top-r">
+    <TypeTags tags={p.tags} />
+    <span class="nodebadge">{p.node}</span>
+  </span>
+</div>
