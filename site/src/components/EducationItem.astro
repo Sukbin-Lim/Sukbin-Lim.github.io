@@ -1,0 +1,29 @@
+---
+import type { Education } from '../data/types';
+interface Props { edu: Education }
+const { edu } = Astro.props;
+const rows = [
+  edu.focus && ['Focus', edu.focus],
+  edu.thesis && ['Thesis', edu.thesis],
+  edu.lab && ['Lab', edu.lab],
+  edu.advisor && ['Advisor', edu.advisor],
+  edu.courses && ['Courses', edu.courses],
+].filter(Boolean) as [string, string][];
+---
+<div class="ritem">
+  <div class="rhead">
+    <span class="rorg">{edu.org}</span>
+    <span class="rwhen">{edu.period}</span>
+  </div>
+  <div class="rrole">{edu.degree}</div>
+  {rows.length > 0 && (
+    <dl class="edl">
+      {rows.map(([k, v]) => (
+        <div class="edl-row">
+          <dt>{k}</dt>
+          <dd>{v}</dd>
+        </div>
+      ))}
+    </dl>
+  )}
+</div>

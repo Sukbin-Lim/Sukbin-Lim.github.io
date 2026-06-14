@@ -1,0 +1,6 @@
+
+# IEEE published PDFs — local source only, do NOT publish (copyright)
+papers/
+
+# Copyright figures (IEEE paper micrographs) — keep local, do NOT publish
+site/public/images/chips/

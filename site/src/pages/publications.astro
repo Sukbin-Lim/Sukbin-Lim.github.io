@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import PubRow from '../components/PubRow.astro';
+import { publications } from '../data/publications';
+import { profile } from '../data/profile';
+
+const journals = publications.filter((p) => p.type === 'journal');
+const confs = publications.filter((p) => p.type === 'conference');
+---
+<Base title="Publications — Sukbin Lim" description="Peer-reviewed publications by Sukbin Lim in IEEE JSSC, VLSI, CICC, ESSCIRC, ASP-DAC, IEEE Micro and JETCAS.">
+  <header class="phead">
+    <h1>Publications</h1>
+    <p>{publications.length} peer-reviewed papers · <a href={profile.scholar} target="_blank" rel="noopener">full list on Google Scholar →</a></p>
+  </header>
+
+  <h2 class="dh">Journal <span class="dh-c">{journals.length}</span></h2>
+  {journals.map((p) => <PubRow pub={p} />)}
+
+  <h2 class="dh">Conference <span class="dh-c">{confs.length}</span></h2>
+  {confs.map((p) => <PubRow pub={p} />)}
+</Base>

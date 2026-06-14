@@ -1,0 +1,116 @@
+---
+import Base from '../layouts/Base.astro';
+import AuthorList from '../components/AuthorList.astro';
+import { profile } from '../data/profile';
+import { projects } from '../data/projects';
+import { publications } from '../data/publications';
+import { experience, education, patents, awards, service } from '../data/resume';
+
+const journals = publications.filter((p) => p.type === 'journal');
+const confs = publications.filter((p) => p.type === 'conference');
+const cvProjects = projects.filter((p) => p.pubIds.length > 0 || p.chipId || (p.patentIds?.length ?? 0) > 0);
+const linkOf = (p: typeof publications[number]) => p.links?.doi ?? p.links?.ieee ?? p.links?.pdf ?? null;
+---
+<Base title="Sukbin Lim — Curriculum Vitae" bare={true}>
+  <div class="cvbar no-print">
+    <button type="button" onclick="window.print()">Save as PDF&nbsp;↓</button>
+    <a href="/">← back to site</a>
+  </div>
+
+  <article class="cv">
+    <header class="cvtop">
+      <h1>{profile.name}</h1>
+      <div class="cvtitle">{profile.tagline}</div>
+      <div class="cvcontact">
+        <a href={`mailto:${profile.email}`}>{profile.email}</a>
+        <span>·</span><a href={profile.scholar} target="_blank" rel="noopener">Google Scholar</a>
+        <span>·</span><a href={profile.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <p class="cvsummary">
+        AI-accelerator / NPU chip designer. {projects.length} silicon &amp; systems projects and
+        {' '}{publications.length} peer-reviewed papers, including two fabricated chips led as 1st / co-first author.
+      </p>
+    </header>
+
+    <section class="cvsec">
+      <h2>Experience</h2>
+      {experience.map((e) => (
+        <div class="cvrow">
+          <div class="cvrow-h"><b>{e.org}</b> — {e.role}<span class="cvwhen">{e.period}</span></div>
+          {e.note && <div class="cvrow-n">{e.note}</div>}
+          {e.highlights && <ul class="cvhl">{e.highlights.map((h) => <li>{h}</li>)}</ul>}
+        </div>
+      ))}
+    </section>
+
+    <section class="cvsec">
+      <h2>Education</h2>
+      {education.map((e) => (
+        <div class="cvrow">
+          <div class="cvrow-h"><b>{e.org}</b> — {e.degree}<span class="cvwhen">{e.period}</span></div>
+          <dl class="cvedl">
+            {e.focus && <><dt>Focus</dt><dd>{e.focus}</dd></>}
+            {e.thesis && <><dt>Thesis</dt><dd>{e.thesis}</dd></>}
+            {e.lab && <><dt>Lab</dt><dd>{e.lab}</dd></>}
+            {e.advisor && <><dt>Advisor</dt><dd>{e.advisor}</dd></>}
+            {e.courses && <><dt>Courses</dt><dd>{e.courses}</dd></>}
+          </dl>
+        </div>
+      ))}
+    </section>
+
+    <section class="cvsec">
+      <h2>Selected Projects</h2>
+      {cvProjects.map((p) => (
+        <div class="cvrow">
+          <div class="cvrow-h"><b>{p.codename}</b> — {p.kind}<span class="cvwhen">{p.tags.join(' / ')} · {p.node}{p.heroMetric ? ` · ${p.heroMetric}` : ''}</span></div>
+          <div class="cvrow-n"><i>{p.role}.</i> {p.narrative}</div>
+        </div>
+      ))}
+    </section>
+
+    <section class="cvsec">
+      <h2>Publications <span class="cvcount">{publications.length}</span></h2>
+      <h3>Journal</h3>
+      <ol class="cvcite">
+        {journals.map((p) => (
+          <li>
+            <AuthorList authors={p.authors} />, &ldquo;{p.title},&rdquo; <i>{p.venue.full}</i> ({p.venue.abbr}), {p.year}.
+            {p.equalNote ? ' (* equal contribution)' : ''}
+            {linkOf(p) && <> <a href={linkOf(p)}>[link]</a></>}
+          </li>
+        ))}
+      </ol>
+      <h3>Conference</h3>
+      <ol class="cvcite">
+        {confs.map((p) => (
+          <li>
+            <AuthorList authors={p.authors} />, &ldquo;{p.title},&rdquo; <i>{p.venue.full}</i> ({p.venue.abbr}), {p.year}.
+            {linkOf(p) && <> <a href={linkOf(p)}>[link]</a></>}
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="cvsec">
+      <h2>Patents <span class="cvcount">{patents.length}</span></h2>
+      <ol class="cvcite">
+        {patents.map((pt) => <li>{pt.title}. <span class="ptid">{pt.id}</span></li>)}
+      </ol>
+    </section>
+
+    <section class="cvsec">
+      <h2>Awards &amp; Honors</h2>
+      <ul class="cvlist">
+        {awards.map((a) => <li>{a.title}{a.year ? ` (${a.year})` : ''}</li>)}
+      </ul>
+    </section>
+
+    <section class="cvsec">
+      <h2>Service &amp; Activities</h2>
+      <ul class="cvlist">
+        {service.map((s) => <li>{s}</li>)}
+      </ul>
+    </section>
+  </article>
+</Base>

@@ -1,0 +1,17 @@
+---
+import { profile } from '../data/profile';
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isOn = (href: string) => (href === '/' ? path === '/' : path === href || path.startsWith(href + '/'));
+---
+<div class="bar">
+  <a class="nm" href="/">{profile.brand}</a>
+  <nav>
+    {profile.nav.map((item) => (
+      <a
+        href={item.href}
+        class={[item.cta ? 'cta' : '', isOn(item.href) ? 'on' : ''].filter(Boolean).join(' ') || undefined}
+        aria-current={isOn(item.href) ? 'page' : undefined}
+      >{item.label}</a>
+    ))}
+  </nav>
+</div>

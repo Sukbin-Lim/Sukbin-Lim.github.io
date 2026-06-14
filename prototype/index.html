@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sukbin Lim — Prototype (Adelia)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=Martian+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f0efe9; --card:#ffffff; --ink:#111110; --ink2:#56544c; --faint:#8f8c80; --line:#11111022;
+    --blue:#1f37ff; --lime:#d8fb3a; --coral:#ff5a2b;
+    --navy:#0c1330;
+    --disp:'Bricolage Grotesque',sans-serif; --sans:'Hanken Grotesk',sans-serif; --mono:'Martian Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1160px;margin:0 auto;padding:40px 44px 70px}
+  a{color:inherit}
+
+  /* nav */
+  .bar{display:flex;justify-content:space-between;align-items:center;border:2px solid var(--ink);border-radius:60px;padding:11px 12px 11px 22px;background:var(--card)}
+  .bar .nm{font-family:var(--disp);font-weight:700;font-size:17px}
+  .bar nav{display:flex;gap:4px;align-items:center}
+  .bar nav a{font-family:var(--mono);font-size:11px;text-decoration:none;padding:8px 14px;border-radius:40px;letter-spacing:.02em}
+  .bar nav a.cta{background:var(--ink);color:var(--bg)}
+
+  /* hero */
+  .hero{margin-top:34px;display:grid;grid-template-columns:1.5fr 1fr;gap:26px}
+  .htxt .tag{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--blue);text-transform:uppercase}
+  .htxt h1{font-family:var(--disp);font-weight:800;font-size:88px;line-height:.92;letter-spacing:-.035em;margin:14px 0 0}
+  .htxt h1 em{font-style:normal;color:var(--blue)}
+  .htxt p{font-size:18px;color:var(--ink2);margin-top:18px;max-width:36ch;line-height:1.45}
+  .aff{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+  .pill{font-family:var(--mono);font-size:11px;border:1.5px solid var(--ink);border-radius:40px;padding:7px 14px;letter-spacing:.02em}
+  .pill.fill{background:var(--ink);color:var(--bg)}
+  .hnum{background:var(--blue);color:#fff;border-radius:26px;padding:28px 30px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+  .hnum::after{content:"";position:absolute;right:-40px;bottom:-40px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.10)}
+  .hnum .big{font-family:var(--disp);font-weight:800;font-size:104px;line-height:.82;letter-spacing:-.04em}
+  .hnum .big sub{font-size:30px;vertical-align:13px;opacity:.72}
+  .hnum .cap{font-size:14.5px;line-height:1.45;margin-top:12px;position:relative}
+  .hnum .cap b{font-weight:700;border-bottom:2px solid var(--lime)}
+
+  /* credibility strip */
+  .strip{margin-top:14px;background:var(--ink);color:var(--bg);border-radius:18px;padding:15px 24px;display:flex;flex-wrap:wrap;gap:9px 26px;align-items:center}
+  .strip span{font-family:var(--mono);font-size:12px}
+  .strip b{color:var(--lime);font-weight:600}
+
+  /* section head */
+  .sh{display:flex;align-items:center;gap:14px;margin:50px 0 22px}
+  .sh h2{font-family:var(--disp);font-weight:700;font-size:30px;letter-spacing:-.02em}
+  .sh .n{font-family:var(--mono);font-size:12px;color:var(--faint)}
+  .sh .ln{flex:1;height:2px;background:var(--ink)}
+  .sh .meta{font-family:var(--mono);font-size:11px;color:var(--faint)}
+
+  /* chip card (wide, single) */
+  .chip{background:var(--card);border:2px solid var(--ink);border-radius:24px;overflow:hidden;display:grid;grid-template-columns:340px 1fr}
+  .floor{position:relative;background:var(--navy);overflow:hidden;border-right:2px solid var(--ink)}
+  .floor::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(120,150,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(120,150,255,.16) 1px,transparent 1px);background-size:20px 20px}
+  .floor .u{position:absolute;border:1px solid rgba(122,160,255,.7);background:rgba(122,160,255,.10);font-family:var(--mono);font-size:8.5px;color:#a9c2ff;display:flex;align-items:center;justify-content:center;letter-spacing:.06em}
+  .floor .u.lime{border-color:rgba(216,251,58,.8);background:rgba(216,251,58,.12);color:var(--lime)}
+  .floor .cap{position:absolute;bottom:10px;left:12px;font-family:var(--mono);font-size:9px;color:#7f93c8;letter-spacing:.12em}
+  .floor .nodebadge{position:absolute;top:12px;right:12px;font-family:var(--mono);font-size:10px;background:var(--lime);color:var(--ink);border-radius:20px;padding:4px 11px;font-weight:600;letter-spacing:.04em}
+  .cin{padding:22px 26px 24px}
+  .cin .kicker{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.08em;text-transform:uppercase}
+  .cin h3{font-family:var(--disp);font-weight:800;font-size:42px;letter-spacing:-.02em;line-height:1;margin-top:5px}
+  .cin .sub{font-size:14px;color:var(--ink2);margin-top:4px;font-weight:500}
+  .cin .d{font-size:14.5px;color:var(--ink2);margin:14px 0 17px;line-height:1.55;max-width:62ch}
+  .kpis{display:flex;gap:9px;flex-wrap:wrap}
+  .kpi{border:1.5px solid var(--ink);border-radius:14px;padding:10px 14px}
+  .kpi.hot{background:var(--lime)}
+  .kpi .v{font-family:var(--disp);font-weight:700;font-size:22px;line-height:1}
+  .kpi .k{font-family:var(--mono);font-size:9.5px;color:var(--faint);letter-spacing:.04em;text-transform:uppercase;margin-top:5px}
+  .kpi.hot .k{color:#4d5400}
+  /* datasheet */
+  .ds{margin-top:18px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .ds .dr{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+  .ds .dr:last-child{border-bottom:none}
+  .ds .cell{display:flex;justify-content:space-between;gap:10px;padding:9px 14px;border-right:1px solid var(--line)}
+  .ds .cell:last-child{border-right:none}
+  .ds .k{font-family:var(--mono);font-size:10.5px;color:var(--faint);letter-spacing:.03em;text-transform:uppercase}
+  .ds .v{font-family:var(--mono);font-size:12px;font-weight:500}
+  .ds .v.b{color:var(--blue)}
+  .vn{font-family:var(--mono);font-size:11.5px;color:var(--ink2);margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .vtag{border:1.5px solid var(--ink);border-radius:40px;padding:5px 12px}
+
+  /* publications */
+  .pub{display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;background:var(--card);border:2px solid var(--ink);border-radius:18px;padding:16px 22px;margin-bottom:12px}
+  .vbox{font-family:var(--disp);font-weight:700;font-size:14px;text-align:center;border-right:2px solid var(--line);padding-right:18px;min-width:78px}
+  .vbox b{display:block;font-family:var(--mono);font-weight:500;font-size:11px;color:var(--blue);margin-top:3px}
+  .pti{font-size:16px;font-weight:600;line-height:1.32}
+  .pau{font-size:12.5px;color:var(--ink2);margin-top:5px;font-family:var(--mono);line-height:1.5}
+  .pau b{color:var(--ink)}
+  .pau sup{color:var(--coral);font-weight:700}
+  .pbd{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+  .tag{font-family:var(--mono);font-size:11px;border-radius:40px;padding:6px 12px;letter-spacing:.02em;white-space:nowrap;border:1.5px solid var(--ink)}
+  .tag.m{background:var(--lime)}
+  .tag.cf{background:var(--coral);color:#fff;border-color:var(--coral)}
+  .legend{font-family:var(--mono);font-size:11px;color:var(--faint);margin:2px 2px 0}
+  .more{margin-top:10px;font-family:var(--mono);font-size:12.5px;color:var(--ink2)}
+  .more a{color:var(--blue);font-weight:600;text-decoration:none}
+
+  .pending{margin-top:22px;border:2px dashed var(--line);border-radius:16px;padding:16px 22px;font-family:var(--mono);font-size:12px;color:var(--faint);line-height:1.7}
+  .pending b{color:var(--ink2)}
+  .foot{margin-top:34px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--faint);border-top:1px solid var(--line);padding-top:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="bar">
+    <div class="nm">Sukbin Lim ✦</div>
+    <nav><a href="#">Chips</a><a href="#">Publications</a><a href="#">Awards</a><a href="#" class="cta">CV ↓</a></nav>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="htxt">
+      <div class="tag">AI Accelerator / NPU Chip Designer</div>
+      <h1>Silicon<br>for <em>fast</em> AI.</h1>
+      <p>I design and tape out the chips that make large-model inference efficient.</p>
+      <div class="aff"><span class="pill fill">KAIST · CASTLab</span><span class="pill">HyperAccel</span></div>
+    </div>
+    <div class="hnum">
+      <div class="big">2.51<sub>×</sub></div>
+      <div class="cap">higher <b>throughput than an NVIDIA&nbsp;H100</b> — Adelia, a 4&nbsp;nm LLM accelerator in fabricated silicon. (1.59× memory-bandwidth efficiency.)</div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <span><b>Adelia</b> — 4 nm LLM accelerator</span><span><b>5.28</b> mm² die</span><span><b>91%</b> memory-BW utilization</span><span><b>30B</b>-param LLM on-chip</span><span><b>★</b> JSSC 2026 (co-first) + VLSI 2025</span>
+  </div>
+
+  <!-- CHIP -->
+  <div class="sh"><span class="n">01</span><h2>Fabricated Silicon</h2><span class="ln"></span><span class="meta">HyperAccel × KAIST · 4 nm</span></div>
+
+  <article class="chip">
+    <div class="floor">
+      <div class="nodebadge">4 nm</div>
+      <div class="u lime" style="top:8%;left:8%;width:38%;height:17%">MXE #0</div>
+      <div class="u lime" style="top:8%;left:54%;width:38%;height:17%">MXE #1</div>
+      <div class="u lime" style="top:28%;left:8%;width:38%;height:17%">MXE #2</div>
+      <div class="u lime" style="top:28%;left:54%;width:38%;height:17%">MXE #3</div>
+      <div class="u" style="top:49%;left:8%;width:84%;height:12%">Systolic Parameter Path (SPP)</div>
+      <div class="u" style="top:64%;left:8%;width:40%;height:14%">VXE</div>
+      <div class="u" style="top:64%;left:52%;width:40%;height:14%">RCP</div>
+      <div class="u" style="top:81%;left:8%;width:84%;height:9%">Streamlined DMA</div>
+      <div class="cap">ADELIA · FLOORPLAN (annotated · die photo pending)</div>
+    </div>
+    <div class="cin">
+      <div class="kicker">LLM Accelerator</div>
+      <h3>Adelia</h3>
+      <div class="sub">4 nm LLM inference accelerator — streamlined dataflow + dual-mode parallelism</div>
+      <p class="d">Matches external memory bandwidth to an LLM-optimized compute engine through a Streamlined Dataflow and Systolic Parameter Path, and dynamically switches between context-mode and batch-mode parallelism — reaching up to 91% memory-bandwidth utilization on end-to-end LLM inference for models up to 30B parameters.</p>
+
+      <div class="kpis">
+        <div class="kpi hot"><div class="v">2.51×</div><div class="k">throughput vs H100</div></div>
+        <div class="kpi hot"><div class="v">1.59×</div><div class="k">mem-BW eff vs H100</div></div>
+        <div class="kpi"><div class="v">91%</div><div class="k">memory-BW utilization</div></div>
+      </div>
+
+      <div class="ds">
+        <div class="dr"><div class="cell"><span class="k">Process</span><span class="v">4 nm CMOS</span></div><div class="cell"><span class="k">Die area</span><span class="v">5.28 mm²</span></div></div>
+        <div class="dr"><div class="cell"><span class="k">Supply</span><span class="v">0.65–0.9 V</span></div><div class="cell"><span class="k">Max freq.</span><span class="v">1 GHz</span></div></div>
+        <div class="dr"><div class="cell"><span class="k">Power</span><span class="v">11 mW – 735 mW</span></div><div class="cell"><span class="k">Mem-BW util.</span><span class="v b">80.1% (max 91%)</span></div></div>
+        <div class="dr"><div class="cell"><span class="k">Throughput</span><span class="v b">65.72 token/s</span></div><div class="cell"><span class="k">vs baseline</span><span class="v">−35.1% latency</span></div></div>
+      </div>
+
+      <div class="vn">Published in&nbsp; <span class="vtag">JSSC 2026 (co-first)</span><span class="vtag">VLSI 2025</span></div>
+    </div>
+  </article>
+
+  <!-- PUBLICATIONS -->
+  <div class="sh"><span class="n">02</span><h2>Publications · Adelia</h2><span class="ln"></span><span class="meta">2 entries</span></div>
+
+  <div class="pub">
+    <div class="vbox">JSSC<b>2026</b></div>
+    <div>
+      <div class="pti">Adelia: A 4 nm LLM Processing Unit with Streamlined Dataflow and Dual-Mode Parallelism for Maximizing Hardware Efficiency</div>
+      <div class="pau"><b>Sukbin Lim</b><sup>*</sup>, Jung-Hoon Kim<sup>*</sup>, Junseo Cha, Seungjae Moon, Dongjin Seo, Hunjong Lee, Jongho Kim, Jinwon Lee, Joo-Young Kim</div>
+    </div>
+    <div class="pbd"><span class="tag cf">co-first ✦</span><span class="tag m">2.51× H100</span></div>
+  </div>
+  <div class="legend">* Equal contribution &nbsp;·&nbsp; IEEE Journal of Solid-State Circuits</div>
+
+  <div class="pub" style="margin-top:12px">
+    <div class="vbox">VLSI<b>2025</b></div>
+    <div>
+      <div class="pti">Adelia: A 4 nm LLM Accelerator with Streamlined Dataflow and Dual-Mode Parallelization for Efficient Generative AI Inference</div>
+      <div class="pau">Jung-Hoon Kim, <b>Sukbin Lim</b>, Junseo Cha, Seungjae Moon, Dongjin Seo, Hunjong Lee, Jongho Kim, Jinwon Lee, Joo-Young Kim</div>
+    </div>
+    <div class="pbd"><span class="tag m">1.59× mem-BW</span></div>
+  </div>
+  <div class="legend">Symposium on VLSI Technology and Circuits · paper C13-1</div>
+
+  <div class="more">Full list (Hawkeye, LPU, T-PIM, JNPU …) + 4 KR patents — <a href="#">Google Scholar →</a></div>
+
+  <div class="pending">
+    <b>// prototype scope:</b> 이 페이지는 <b>Adelia 데이터만</b>으로 만든 프로토타입입니다.<br>
+    다음 입력 시 채워질 것: Hawkeye 칩 카드 · 나머지 논문(LPU/CICC/ESSCIRC/ASP-DAC/T-PIM/JETCAS) · 4 KR patents · Awards(IEEE Micro Best Paper, Samsung HumanTech Gold) · News · 실제 다이샷 micrograph (현재 주석형 floorplan 자리표시자).
+  </div>
+
+  <div class="foot"><span>Sukbin Lim · KAIST EE · HyperAccel</span><span>prototype — Bold Modern (#3) · real Adelia data</span></div>
+
+</div>
+</body>
+</html>

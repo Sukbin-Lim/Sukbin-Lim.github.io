@@ -1,0 +1,10 @@
+/* Design tokens — "Bold Modern" (#3). See arch.md §4. */
+:root {
+  --bg:#f0efe9; --card:#ffffff; --ink:#111110; --ink2:#56544c; --faint:#6f6c62; --line:#11111022;
+  --blue:#1f37ff;   /* PRIMARY — hero number, co-first */
+  --lime:#d8fb3a;   /* hard-number highlight — metric badges, emphasized figures */
+  --coral:#ff5a2b;  /* SECONDARY — 2nd chip, Best Paper */
+  --disp:'Bricolage Grotesque', sans-serif;
+  --sans:'Hanken Grotesk', system-ui, sans-serif;
+  --mono:'Martian Mono', ui-monospace, monospace;
+}

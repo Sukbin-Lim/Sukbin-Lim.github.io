@@ -1,0 +1,8 @@
+---
+import type { ProjType } from '../data/types';
+interface Props { tags: ProjType[] }
+const { tags } = Astro.props;
+---
+<span class="ptags">
+  {tags.map((t) => <span class={`ptag t-${t.toLowerCase()}`}>{t}</span>)}
+</span>

@@ -1,0 +1,15 @@
+---
+interface Props { org: string; line: string; period: string; note?: string; highlights?: string[] }
+const { org, line, period, note, highlights } = Astro.props;
+---
+<div class="ritem">
+  <div class="rhead">
+    <span class="rorg">{org}</span>
+    <span class="rwhen">{period}</span>
+  </div>
+  <div class="rrole">{line}</div>
+  {note && <p class="rnote">{note}</p>}
+  {highlights && highlights.length > 0 && (
+    <ul class="rhl">{highlights.map((h) => <li>{h}</li>)}</ul>
+  )}
+</div>

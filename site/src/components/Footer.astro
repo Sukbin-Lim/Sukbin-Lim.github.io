@@ -1,0 +1,9 @@
+---
+import { profile } from '../data/profile';
+import { publications } from '../data/publications';
+import { fabricatedChipCount } from '../data/projects';
+---
+<div class="foot">
+  <span>{profile.name} · KAIST EE · HyperAccel</span>
+  <span>{fabricatedChipCount} fabricated chips · {publications.length} papers · data from peer-reviewed IEEE publications</span>
+</div>

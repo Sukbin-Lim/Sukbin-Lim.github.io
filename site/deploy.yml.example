@@ -1,0 +1,36 @@
+# GitHub Pages 배포 워크플로우 (활성화 전까지 비활성 — 준비되면 .github/workflows/deploy.yml 로 이동)
+# 활성화 시: 저장소 Settings → Pages → Source = "GitHub Actions" 로 변경.
+# 주의: 현재 라이브 Jekyll 사이트를 이 Astro 빌드로 교체하게 됨.
+name: Deploy Astro site to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: withastro/action@v3
+        with:
+          path: ./site        # Astro 프로젝트가 site/ 하위에 있을 때
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

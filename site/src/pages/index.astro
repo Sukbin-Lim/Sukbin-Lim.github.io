@@ -1,0 +1,53 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import SectionHead from '../components/SectionHead.astro';
+import ProjectFlagship from '../components/ProjectFlagship.astro';
+import ResumeItem from '../components/ResumeItem.astro';
+import EducationItem from '../components/EducationItem.astro';
+import { projects, fabricatedChipCount } from '../data/projects';
+import { experience, education, awards, patents, service } from '../data/resume';
+import { publications } from '../data/publications';
+
+const flagships = projects.filter((p) => p.flagship);
+---
+<Base>
+  <Hero />
+
+  <SectionHead num="01" title="Signature Silicon" meta="led — 1st / co-first author" id="flagship" />
+  <div class="flaggrid">
+    {flagships.map((p) => <ProjectFlagship project={p} />)}
+  </div>
+  <div class="more">
+    All {projects.length} projects by theme — <a href="/projects">LLM · Vision · On-Device Training →</a>
+  </div>
+
+  <SectionHead num="02" title="Experience" />
+  <div class="rlist">
+    {experience.map((e) => <ResumeItem org={e.org} line={e.role} period={e.period} note={e.note} highlights={e.highlights} />)}
+  </div>
+
+  <SectionHead num="03" title="Education" />
+  <div class="rlist">
+    {education.map((e) => <EducationItem edu={e} />)}
+  </div>
+
+  <SectionHead num="04" title="Patents" meta={`${patents.length} granted (KR)`} />
+  <ul class="patlist boxed">
+    {patents.map((pt) => <li><span class="ptid">{pt.id}</span> {pt.title}</li>)}
+  </ul>
+
+  <SectionHead num="05" title="Awards & Honors" meta={`${fabricatedChipCount} fabricated chips · ${publications.length} papers`} />
+  <ul class="awards">
+    {awards.map((a) => <li>{a.title}{a.year ? ` · ${a.year}` : ''}</li>)}
+  </ul>
+
+  <SectionHead num="06" title="Activity" />
+  <ul class="svc">
+    {service.map((s) => <li>{s}</li>)}
+  </ul>
+
+  <div class="more">
+    <a href="/cv">Full CV →</a> &nbsp;·&nbsp; <a href="/publications">{publications.length} publications →</a>
+  </div>
+</Base>

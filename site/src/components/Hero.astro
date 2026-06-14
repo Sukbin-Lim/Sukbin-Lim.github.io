@@ -1,0 +1,19 @@
+---
+import { profile } from '../data/profile';
+const { h1Html, intro, affiliations, statement, tagline } = profile;
+---
+<section class="hero">
+  <div class="htxt">
+    <div class="tag">{tagline}</div>
+    <h1 set:html={h1Html}></h1>
+    <p>{intro}</p>
+    <div class="aff">
+      {affiliations.map((a) => <span class={a.fill ? 'pill fill' : 'pill'}>{a.label}</span>)}
+    </div>
+  </div>
+  <div class="hnum">
+    <div class="hs-k">{statement.kicker}</div>
+    <div class="hs-lead">{statement.lead}</div>
+    <div class="cap">{statement.body}</div>
+  </div>
+</section>

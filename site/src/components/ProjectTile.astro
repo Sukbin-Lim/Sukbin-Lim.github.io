@@ -1,0 +1,24 @@
+---
+import type { Project } from '../data/types';
+import { venueTags } from '../data/util';
+import TypeTags from './TypeTags.astro';
+interface Props { project: Project }
+const { project: p } = Astro.props;
+const tags = venueTags(p.pubIds);
+---
+<a class={`tile acc-${p.accent}`} href={`/projects/${p.id}`}>
+  <div class="tile-top">
+    <span class="codename">{p.codename}</span>
+    <span class="node">{p.node}</span>
+  </div>
+  {p.heroMetric && <div class="metric">{p.heroMetric}</div>}
+  <div class="kind">{p.kind}</div>
+  <div class="tile-meta">
+    <TypeTags tags={p.tags} />
+    <span class="role">{p.role}</span>
+  </div>
+  <div class="vtags">
+    {tags.map((t) => <span class="vtag">{t}</span>)}
+    {tags.length === 0 && <span class="vtag muted">patent</span>}
+  </div>
+</a>

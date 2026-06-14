@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionHead from '../components/SectionHead.astro';
+import ProjectFlagship from '../components/ProjectFlagship.astro';
+import ProjectTile from '../components/ProjectTile.astro';
+import { themes, projects, projectsByTheme } from '../data/projects';
+---
+<Base title="Projects — Sukbin Lim" description="AI-accelerator silicon and systems by Sukbin Lim, grouped by research theme: LLM acceleration, 3D perception, processing-in-memory, and homomorphic encryption.">
+  <header class="phead">
+    <h1>Projects</h1>
+    <p>{projects.length} silicon &amp; systems projects, grouped by research theme. Two chips led as 1st / co-first author; the rest contributed within the lab.</p>
+  </header>
+
+  {themes.map((t, i) => {
+    const ps = projectsByTheme(t.id);
+    const flags = ps.filter((p) => p.flagship);
+    const tiles = ps.filter((p) => !p.flagship);
+    return (
+      <section class="theme">
+        <SectionHead num={String(i + 1).padStart(2, '0')} title={t.title} meta={t.blurb} id={t.id} />
+        {flags.length > 0 && <div class="flaggrid">{flags.map((p) => <ProjectFlagship project={p} />)}</div>}
+        {tiles.length > 0 && <div class="tilegrid">{tiles.map((p) => <ProjectTile project={p} />)}</div>}
+      </section>
+    );
+  })}
+</Base>

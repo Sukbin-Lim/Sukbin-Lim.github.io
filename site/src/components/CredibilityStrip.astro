@@ -1,0 +1,6 @@
+---
+import { profile } from '../data/profile';
+---
+<div class="strip">
+  {profile.credibility.map((c) => <span><b>{c.b}</b> {c.text}</span>)}
+</div>

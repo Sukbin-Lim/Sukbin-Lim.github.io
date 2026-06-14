@@ -1,0 +1,26 @@
+---
+import type { Publication } from '../data/types';
+import AuthorList from './AuthorList.astro';
+import Badge from './Badge.astro';
+interface Props { pub: Publication }
+const { pub } = Astro.props;
+const href = pub.links?.doi ?? pub.links?.ieee ?? pub.links?.pdf ?? null;
+const legendParts = [
+  pub.equalNote ? '* Equal contribution' : null,
+  pub.venue.full,
+  pub.note ?? null,
+].filter(Boolean);
+---
+<div class="pub">
+  <div class="vbox">{pub.venue.abbr}<b>{pub.year}</b></div>
+  <div>
+    <div class="pti">{href ? <a href={href} class="plink" target="_blank" rel="noopener">{pub.title}</a> : pub.title}</div>
+    <div class="pau"><AuthorList authors={pub.authors} /></div>
+  </div>
+  <div class="pbd">
+    {pub.equalNote && <Badge variant="cf" text="co-first ✦" />}
+    {pub.bestPaper && <Badge variant="best" text="★ Best Paper" />}
+    {pub.metric && <Badge variant="m" text={pub.metric} />}
+  </div>
+</div>
+<div class="legend">{legendParts.join(' · ')}</div>

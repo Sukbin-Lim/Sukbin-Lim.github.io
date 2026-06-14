@@ -1,0 +1,8 @@
+---
+import type { Author } from '../data/types';
+interface Props { authors: Author[] }
+const { authors } = Astro.props;
+---
+{authors.map((a, i) => (
+  <Fragment>{i > 0 ? ', ' : ''}{a.self ? <strong>{a.name}</strong> : a.name}{a.equal && <sup>*</sup>}</Fragment>
+))}

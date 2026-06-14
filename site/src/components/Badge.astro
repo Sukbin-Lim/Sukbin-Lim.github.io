@@ -1,0 +1,6 @@
+---
+interface Props { variant?: 'm' | 'cf' | 'best' | 'plain'; text: string }
+const { variant = 'plain', text } = Astro.props;
+const cls = variant === 'plain' ? 'tag' : `tag ${variant}`;
+---
+<span class={cls}>{text}</span>
