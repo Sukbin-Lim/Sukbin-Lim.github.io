@@ -3,6 +3,11 @@ import { profile } from '../data/profile';
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const isOn = (href: string) => (href === '/' ? path === '/' : path === href || path.startsWith(href + '/'));
 ---
+<div class="util">
+  <a class="util-a" href={`mailto:${profile.email}`}>{profile.email}</a>
+  <span class="util-sep">·</span>
+  <a class="util-a" href={profile.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+</div>
 <div class="bar">
   <a class="nm" href="/">{profile.brand}</a>
   <nav>
