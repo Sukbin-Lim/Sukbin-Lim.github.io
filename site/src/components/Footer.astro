@@ -4,6 +4,10 @@ import { publications } from '../data/publications';
 import { fabricatedChipCount } from '../data/projects';
 ---
 <div class="foot">
-  <span>{profile.name} · KAIST EE · HyperAccel</span>
+  <span>
+    {profile.name} · KAIST EE · HyperAccel ·
+    <a class="foot-a" href={profile.scholar} target="_blank" rel="noopener">Google Scholar</a> ·
+    <a class="foot-a" href={profile.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+  </span>
   <span>{fabricatedChipCount} fabricated chips · {publications.length} papers · data from peer-reviewed IEEE publications</span>
 </div>

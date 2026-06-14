@@ -80,6 +80,8 @@ a{color:inherit}
 .more a{color:var(--blue);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 
 .foot{margin-top:34px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-family:var(--mono);font-size:11px;color:var(--faint);border-top:1px solid var(--line);padding-top:16px}
+.foot-a{color:var(--blue);text-decoration:none;text-underline-offset:2px}
+.foot-a:hover{text-decoration:underline}
 
 /* ── generic node badge + role tag (projects) ── */
 .nodebadge{flex:none;font-family:var(--mono);font-size:10px;background:var(--lime);color:var(--ink);border-radius:20px;padding:4px 11px;font-weight:600;letter-spacing:.04em;white-space:nowrap}
