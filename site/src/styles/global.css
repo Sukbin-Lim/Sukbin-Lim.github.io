@@ -141,9 +141,6 @@ a{color:inherit}
 .rhl{list-style:none;margin-top:10px;display:flex;flex-direction:column;gap:6px}
 .rhl li{font-size:13.5px;color:var(--ink2);line-height:1.5;padding-left:16px;position:relative}
 .rhl li::before{content:"–";position:absolute;left:0;color:var(--blue);font-weight:700}
-.awards{list-style:none;display:flex;flex-direction:column;gap:8px}
-.awards li{font-size:15px;padding-left:24px;position:relative}
-.awards li::before{content:"★";position:absolute;left:0;color:var(--coral)}
 .edl{margin-top:10px;display:flex;flex-direction:column;gap:5px}
 .edl-row{display:grid;grid-template-columns:84px 1fr;gap:12px;align-items:baseline}
 .edl dt{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--faint)}

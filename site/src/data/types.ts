@@ -81,7 +81,7 @@ export interface Education {
   courses?: string;
 }
 export interface Patent { id: string; title: string; project?: string }
-export interface Award { title: string; year?: number }
+export interface Award { title: string; year?: number; for?: string }
 
 export interface Affiliation { label: string; fill?: boolean }
 export interface CredItem { b: string; text: string }

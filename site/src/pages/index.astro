@@ -38,8 +38,8 @@ const flagships = projects.filter((p) => p.flagship);
   </ul>
 
   <SectionHead num="05" title="Awards & Honors" meta={`${fabricatedChipCount} fabricated chips · ${publications.length} papers`} />
-  <ul class="awards">
-    {awards.map((a) => <li>{a.title}{a.year ? ` · ${a.year}` : ''}</li>)}
+  <ul class="svc">
+    {awards.map((a) => <li>{a.title}{a.for ? ` — ${a.for}` : ''}{a.year ? ` (${a.year})` : ''}</li>)}
   </ul>
 
   <SectionHead num="06" title="Activity" />

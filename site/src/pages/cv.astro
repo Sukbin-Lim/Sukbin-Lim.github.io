@@ -102,7 +102,7 @@ const linkOf = (p: typeof publications[number]) => p.links?.doi ?? p.links?.ieee
     <section class="cvsec">
       <h2>Awards &amp; Honors</h2>
       <ul class="cvlist">
-        {awards.map((a) => <li>{a.title}{a.year ? ` (${a.year})` : ''}</li>)}
+        {awards.map((a) => <li>{a.title}{a.for ? ` — ${a.for}` : ''}{a.year ? ` (${a.year})` : ''}</li>)}
       </ul>
     </section>
 

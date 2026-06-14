@@ -63,8 +63,8 @@ export const patents: Patent[] = [
 ];
 
 export const awards: Award[] = [
-  { title: 'Best Paper Award, IEEE Micro', year: 2024 },
-  { title: 'Gold Prize in Circuit Design, 29th Samsung HumanTech Paper Award' },
+  { title: 'Best Paper Award, IEEE Micro', year: 2024, for: 'LPU' },
+  { title: 'Gold Prize in Circuit Design, 29th Samsung HumanTech Paper Award', for: 'JNPU' },
 ];
 
 export const service: string[] = [
